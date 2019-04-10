@@ -24,6 +24,8 @@
        Job <input type="text" name="job" id="job"/></br></br>
        <input type="submit" name="submit" value="Submit" />
        <input type="submit" name="load_data" value="Load Data" />
+	   <input type="file" name="gambar"/>
+    <input type="submit" value="Upload"/>
  </form>
  <?php
     $host = "submissionazure1db.database.windows.net";
