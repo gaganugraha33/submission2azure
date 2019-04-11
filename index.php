@@ -155,6 +155,15 @@ else
         echo $code.": ".$error_message."<br />";
     }
 }
+
+if (isset($_POST['submit'])) {
+	$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
+	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
+	// echo fread($content, filesize($fileToUpload));
+	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+	header("Location: index.php");
+}
+
 ?>
 
 
@@ -162,7 +171,7 @@ else
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
 <div class="mt-4 mb-2">
-			<form class="d-flex justify-content-lefr" action="analyze.php" method="post" enctype="multipart/form-data">
+			<form class="d-flex justify-content-lefr" action="index.php" method="post" enctype="multipart/form-data">
 				<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
 				<input type="submit" name="submit" value="Upload">
 			</form>
