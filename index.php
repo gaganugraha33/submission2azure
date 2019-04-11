@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
 	// echo fread($content, filesize($fileToUpload));
 	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-	header("Location: analyze.php");
+	header("Location: index.php");
 }
 $listBlobsOptions = new ListBlobsOptions();
 $listBlobsOptions->setPrefix("");
