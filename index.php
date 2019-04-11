@@ -59,7 +59,7 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 
 <html>
  <head>
- <Title>Registration Form</Title>
+ <Title>Submission 2 azure</Title>
  <style type="text/css">
  	body { background-color: #fff; border-top: solid 10px #000;
  	    color: #333; font-size: .85em; margin: 20; padding: 20;
@@ -75,13 +75,13 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
  </style>
  </head>
  <body>
- <h1>Register here!</h1>
- <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+ <h1>Upload image here!</h1>
+ <p>upload your image, then click <strong>Submit</strong> for send to server.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
        <input type="submit" name="submit" value="Submit" />
        <input type="submit" name="load_data" value="Load Data" />
-	    <input type="hidden" name="url" value="<?php echo $blob->getUrl()?>"/>
-	  <input type="submit" name="submit" value="Analyze!" class="btn btn-primary"/>
+	    <input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
+				<input type="submit" name="submit" value="Upload">
  </form>
  <br>
 		<br>
