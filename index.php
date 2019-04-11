@@ -53,8 +53,7 @@ if (isset($_POST['submit'])) {
 	header("Location: index.php");
 }
 $listBlobsOptions = new ListBlobsOptions();
-$listBlobsOptions->setPrefix("");
-$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+
 ?>
 
 
