@@ -57,33 +57,53 @@ $listBlobsOptions->setPrefix("");
 $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 ?>
 
+<!DOCTYPE html>
 <html>
  <head>
- <Title>Submission 2 azure</Title>
- <style type="text/css">
- 	body { background-color: #fff; border-top: solid 10px #000;
- 	    color: #333; font-size: .85em; margin: 20; padding: 20;
- 	    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
- 	}
- 	h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
- 	h1 { font-size: 2em; }
- 	h2 { font-size: 1.75em; }
- 	h3 { font-size: 1.2em; }
- 	table { margin-top: 0.75em; }
- 	th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
- 	td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
- </style>
- </head>
- <body>
- <h1>Upload image here!</h1>
- <p>upload your image, then click <strong>Submit</strong> for send to server.</p>
- <form method="post" action="index.php" enctype="multipart/form-data" >
-       <input type="submit" name="submit" value="Submit" />
-       <input type="submit" name="load_data" value="Load Data" />
-	    <input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://raw.githubusercontent.com/muhrizky/Smart-Parkir/master/parking_meter__2__Mrq_icon.ico">
+
+    <title>Undip Smart Parkir</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/">Home</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/analyze.php">Analisis Kendaraan<span class="sr-only">(current)</span></a>
+			</li>
+		</div>
+		</nav>
+		<main role="main" class="container">
+    		<div class="starter-template"> <br><br><br>
+        		<h1>Analisis Kendaraan</h1>
+				<p class="lead">Pilih Foto Kendaraan Anda.<br> Kemudian Click <b>Upload</b>, untuk menganlisa foto pilih <b>analyze</b> pada tabel.</p>
+				<span class="border-top my-3"></span>
+			</div>
+		<div class="mt-4 mb-2">
+			<form class="d-flex justify-content-lefr" action="analyze.php" method="post" enctype="multipart/form-data">
+				<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
 				<input type="submit" name="submit" value="Upload">
- </form>
- <br>
+			</form>
+		</div>
+		<br>
 		<br>
 		<h4>Total Files : <?php echo sizeof($result->getBlobs())?></h4>
 		<table class='table table-hover'>
@@ -119,5 +139,11 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 		</table>
 
 	</div>
- </body>
- </html>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
