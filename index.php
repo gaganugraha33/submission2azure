@@ -42,7 +42,7 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==;";
-$containerName = "submission2blobstorage";
+$containerName = "blobsubmission2";
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 if (isset($_POST['submit'])) {
@@ -78,10 +78,10 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
  <h1>Register here!</h1>
  <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
  <form method="post" action="index.php" enctype="multipart/form-data" >
-      <input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
-	  <input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
        <input type="submit" name="submit" value="Submit" />
        <input type="submit" name="load_data" value="Load Data" />
+	    <input type="hidden" name="url" value="<?php echo $blob->getUrl()?>"/>
+	  <input type="submit" name="submit" value="Analyze!" class="btn btn-primary"/>
  </form>
  <?php
     
