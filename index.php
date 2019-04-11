@@ -1,3 +1,28 @@
+
+<?php
+require_once 'vendor/autoload.php';
+require_once "./random_string.php";
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
+use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
+use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
+use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
+$connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA====;";
+$containerName = "submission2blobstorage";
+// Create blob client.
+$blobClient = BlobRestProxy::createBlobService($connectionString);
+if (isset($_POST['submit'])) {
+	$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
+	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
+	// echo fread($content, filesize($fileToUpload));
+	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+	header("Location: analyze.php");
+}
+$listBlobsOptions = new ListBlobsOptions();
+$listBlobsOptions->setPrefix("");
+$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+?>
+
 <html>
  <head>
  <Title>Registration Form</Title>
@@ -24,8 +49,8 @@
        Job <input type="text" name="job" id="job"/></br></br>
        <input type="submit" name="submit" value="Submit" />
        <input type="submit" name="load_data" value="Load Data" />
-	   <input type="file" name="gambar"/>
-    <input type="submit" value="Upload"/>
+	   <input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
+	<input type="submit" name="submit" value="Upload">
  </form>
  <?php
     $host = "submissionazure1db.database.windows.net";
