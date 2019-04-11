@@ -42,8 +42,32 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==;";
-$containerName = "blobsubmission2";
 // Create blob client.
+
+ $createContainerOptions = new CreateContainerOptions();
+
+    // Set public access policy. Possible values are
+    // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
+    // CONTAINER_AND_BLOBS:
+    // Specifies full public read access for container and blob data.
+    // proxys can enumerate blobs within the container via anonymous
+    // request, but cannot enumerate containers within the storage account.
+    //
+    // BLOBS_ONLY:
+    // Specifies public read access for blobs. Blob data within this
+    // container can be read via anonymous request, but container data is not
+    // available. proxys cannot enumerate blobs within the container via
+    // anonymous request.
+    // If this value is not specified in the request, container data is
+    // private to the account owner.
+    $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
+
+    // Set container metadata.
+    $createContainerOptions->addMetaData("key1", "value1");
+    $createContainerOptions->addMetaData("key2", "value2");
+
+      $containerName = "blobsubmission2".generateRandomString();
+
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 if (isset($_POST['submit'])) {
 	$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
@@ -52,9 +76,9 @@ if (isset($_POST['submit'])) {
 	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 	header("Location: index.php");
 }
-$listBlobsOptions = new ListBlobsOptions();
-$listBlobsOptions->setPrefix("");
-$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+$blobClient->createContainer($containerName, $createContainerOptions);
+ $listBlobsOptions = new ListBlobsOptions();
+ $listBlobsOptions->setPrefix("HelloWorld");
 ?>
 
 
