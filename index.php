@@ -161,3 +161,9 @@ else
 <form method="post" action="phpQS.php?Cleanup&containerName=<?php echo $containerName; ?>">
     <button type="submit">Press to clean up all resources created by this sample</button>
 </form>
+<div class="mt-4 mb-2">
+			<form class="d-flex justify-content-lefr" action="analyze.php" method="post" enctype="multipart/form-data">
+				<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
+				<input type="submit" name="submit" value="Upload">
+			</form>
+</div>
