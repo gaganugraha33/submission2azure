@@ -45,34 +45,13 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobs
 
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
+$containerName = "imagesblob";
 
 //$fileToUpload = "HelloWorld.txt";
 
 if (isset($_POST["submit"])) {
-    // Create container options object.
-    $createContainerOptions = new CreateContainerOptions();
-
-    // Set public access policy. Possible values are
-    // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
-    // CONTAINER_AND_BLOBS:
-    // Specifies full public read access for container and blob data.
-    // proxys can enumerate blobs within the container via anonymous
-    // request, but cannot enumerate containers within the storage account.
-    //
-    // BLOBS_ONLY:
-    // Specifies public read access for blobs. Blob data within this
-    // container can be read via anonymous request, but container data is not
-    // available. proxys cannot enumerate blobs within the container via
-    // anonymous request.
-    // If this value is not specified in the request, container data is
-    // private to the account owner.
-    $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
-
-    // Set container metadata.
-    $createContainerOptions->addMetaData("key1", "value1");
-    $createContainerOptions->addMetaData("key2", "value2");
-
-      $containerName = "imagesblob".generateRandomString();
+    
+    
 
     try {
         // Create container.
