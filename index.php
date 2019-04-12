@@ -118,7 +118,8 @@ if (isset($_POST["submit"])) {
 // List blobs.
    $listBlobsOptions = new ListBlobsOptions();
    $listBlobsOptions->setPrefix("");
-
+   $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+	
 ?>
 <html>
 <head>
@@ -159,7 +160,7 @@ if (isset($_POST["submit"])) {
 			<tbody>
 				<?php
 				do {
-					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+					
 					foreach ($result->getBlobs() as $blob)
 					{
 						?>
