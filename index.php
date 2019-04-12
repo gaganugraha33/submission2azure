@@ -93,6 +93,7 @@ if (isset($_POST["submit"])) {
 
         //Upload blob
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+		header("Location: index.php");
 
         // List blobs.
         $listBlobsOptions = new ListBlobsOptions();
