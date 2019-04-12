@@ -135,6 +135,7 @@ if (isset($_POST["submit"])) {
     <link href="starter-template.css" rel="stylesheet">
   </head>
   <body>
+  <main role="main" class="container">
 <div class="mt-4 mb-2">
 			<form class="d-flex justify-content-lefr" action="index.php" method="post" enctype="multipart/form-data">
 				<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
@@ -186,7 +187,7 @@ if (isset($_POST["submit"])) {
 				?>
 			</tbody>
 		</table>
-	
+</div>	
 	
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
