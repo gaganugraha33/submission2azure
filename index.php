@@ -52,7 +52,7 @@ $blobClient = BlobRestProxy::createBlobService($connectionString);
 
 //$fileToUpload = "HelloWorld.txt";
 
-if (!isset($_GET["Cleanup"])) {
+if (!isset($_POST["submit"])) {
     // Create container options object.
     $createContainerOptions = new CreateContainerOptions();
 
@@ -80,6 +80,8 @@ if (!isset($_GET["Cleanup"])) {
 
     try {
         // Create container.
+		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
+	   
         $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
@@ -91,14 +93,14 @@ if (!isset($_GET["Cleanup"])) {
         echo $fileToUpload;
         echo "<br />";
         
-        $content = fopen($fileToUpload, "r");
+        $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
 
         //Upload blob
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 
         // List blobs.
         $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("HelloWorld");
+        $listBlobsOptions->setPrefix("");
 
         echo "These are the blobs present in the container: ";
 
@@ -154,14 +156,6 @@ else
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
-}
-
-if (isset($_POST['submit'])) {
-	$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
-	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
-	// echo fread($content, filesize($fileToUpload));
-	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
-	header("Location: index.php");
 }
 
 ?>
