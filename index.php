@@ -118,8 +118,7 @@ if (isset($_POST["submit"])) {
 // List blobs.
    $listBlobsOptions = new ListBlobsOptions();
    $listBlobsOptions->setPrefix("");
-   $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-	
+
 ?>
 <html>
 <head>
@@ -148,7 +147,7 @@ if (isset($_POST["submit"])) {
 </div>
         <br>
 		<br>
-		<h4>Total Files : <?php echo sizeof($result->getBlobs())?></h4>
+		<h4>File yang telah di upload</h4>
 		<table class='table table-hover'>
 			<thead>
 				<tr>
@@ -160,7 +159,7 @@ if (isset($_POST["submit"])) {
 			<tbody>
 				<?php
 				do {
-					
+					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 					foreach ($result->getBlobs() as $blob)
 					{
 						?>
@@ -168,7 +167,7 @@ if (isset($_POST["submit"])) {
 							<td><?php echo $blob->getName() ?></td>
 							<td><?php echo $blob->getUrl() ?></td>
 							<td>
-								<form action="computervision.php" method="post">
+								<form action="index.php" method="post">
 									<input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
 									<input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
 								</form>
