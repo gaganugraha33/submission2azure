@@ -69,8 +69,8 @@ if (isset($_POST["submit"])) {
     $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
     // Set container metadata.
-    $createContainerOptions->addMetaData("key1", "value1");
-    $createContainerOptions->addMetaData("key2", "value2");
+    $createContainerOptions->addMetaData("ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==", "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==;EndpointSuffix=core.windows.net");
+    $createContainerOptions->addMetaData("DeNn58EhuGFxTlnIzfwxMsIb5LAAB76pfhzVie0oVJLmhsGsepNERdPk5iJT5pe11UipkOh2GROnq7MGhxnnug==", "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=DeNn58EhuGFxTlnIzfwxMsIb5LAAB76pfhzVie0oVJLmhsGsepNERdPk5iJT5pe11UipkOh2GROnq7MGhxnnug==;EndpointSuffix=core.windows.net");
 
       $containerName = "imagesblob".generateRandomString();
 
