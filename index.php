@@ -164,6 +164,7 @@ if (isset($_POST["submit"])) {
 					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 					foreach ($result->getBlobs() as $blob)
 					{
+						echo $blob->getName().": ".$blob->getUrl()."<br />";
 						?>
 						<tr>
 							<td><?php echo $blob->getName() ?></td>
@@ -179,6 +180,9 @@ if (isset($_POST["submit"])) {
 					}
 					$listBlobsOptions->setContinuationToken($result->getContinuationToken());
 				} while($result->getContinuationToken());
+				
+				 $blob = $blobClient->getBlob($containerName, $fileToUpload);
+				 fpassthru($blob->getContentStream());
 				?>
 			</tbody>
 		</table>
