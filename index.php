@@ -46,10 +46,6 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobs
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
 
-
-// Create blob client.
-$blobClient = BlobRestProxy::createBlobService($connectionString);
-
 //$fileToUpload = "HelloWorld.txt";
 
 if (!isset($_POST["submit"])) {
