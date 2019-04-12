@@ -135,59 +135,61 @@ if (isset($_POST["submit"])) {
     <link href="starter-template.css" rel="stylesheet">
   </head>
   <body>
-  <main role="main" class="container">
-<div class="mt-4 mb-2">
-			<form class="d-flex justify-content-lefr" action="index.php" method="post" enctype="multipart/form-data">
-				<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
-				<input type="submit" name="submit" value="Upload">
-			</form>
-</div>
-        <br>
-		<br>
-		<h4>File yang telah di upload</h4>
-		<table class='table table-hover'>
-			<thead>
-				<tr>
-					<th>File Name</th>
-					<th>File URL</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
+	  <main role="main" class="container">
+		<div class="starter-template"> <br><br><br>
+		</div>
+			<div class="mt-4 mb-2">
+						<form class="d-flex justify-content-lefr" action="index.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="fileToUpload" accept=".jpeg,.jpg,.png" required="">
+							<input type="submit" name="submit" value="Upload">
+						</form>
+			</div>
+			<br>
+			<br>
+			<h4>File yang telah di upload</h4>
+			<table class='table table-hover'>
+				<thead>
+					<tr>
+						<th>File Name</th>
+						<th>File URL</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					
+					// List blobs.
+					$listBlobsOptions = new ListBlobsOptions();
+					$listBlobsOptions->setPrefix("");
+					
+					do {
 				
-				// List blobs.
-				$listBlobsOptions = new ListBlobsOptions();
-				$listBlobsOptions->setPrefix("");
-				
-				do {
-			
-					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-					foreach ($result->getBlobs() as $blob)
-					{
-						echo $blob->getName().": ".$blob->getUrl()."<br />";
-						?>
-						<tr>
-							<td><?php echo $blob->getName() ?></td>
-							<td><?php echo $blob->getUrl() ?></td>
-							<td>
-								<form action="index.php" method="post">
-									<input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
-									<input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
-								</form>
-							</td>
-						</tr>
-						<?php
-					}
-					$listBlobsOptions->setContinuationToken($result->getContinuationToken());
-				} while($result->getContinuationToken());
-				
-				 $blob = $blobClient->getBlob($containerName, $fileToUpload);
-				fpassthru($blob->getContentStream());
-				?>
-			</tbody>
-		</table>
-</div>	
+						$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+						foreach ($result->getBlobs() as $blob)
+						{
+							echo $blob->getName().": ".$blob->getUrl()."<br />";
+							?>
+							<tr>
+								<td><?php echo $blob->getName() ?></td>
+								<td><?php echo $blob->getUrl() ?></td>
+								<td>
+									<form action="index.php" method="post">
+										<input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
+										<input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
+									</form>
+								</td>
+							</tr>
+							<?php
+						}
+						$listBlobsOptions->setContinuationToken($result->getContinuationToken());
+					} while($result->getContinuationToken());
+					
+					 $blob = $blobClient->getBlob($containerName, $fileToUpload);
+					fpassthru($blob->getContentStream());
+					?>
+				</tbody>
+			</table>
+	</div>	
 	
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
