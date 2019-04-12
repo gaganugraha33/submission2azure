@@ -95,28 +95,7 @@ if (isset($_POST["submit"])) {
         $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 		header("Location: index.php");
 
-        // List blobs.
-        $listBlobsOptions = new ListBlobsOptions();
-        $listBlobsOptions->setPrefix("");
-
-        echo "These are the blobs present in the container: ";
-
-        do{
-            $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
-            foreach ($result->getBlobs() as $blob)
-            {
-                echo $blob->getName().": ".$blob->getUrl()."<br />";
-            }
         
-            $listBlobsOptions->setContinuationToken($result->getContinuationToken());
-        } while($result->getContinuationToken());
-        echo "<br />";
-
-        // Get blob.
-        echo "This is the content of the blob uploaded: ";
-        $blob = $blobClient->getBlob($containerName, $fileToUpload);
-        fpassthru($blob->getContentStream());
-        echo "<br />";
     }
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
@@ -135,6 +114,10 @@ if (isset($_POST["submit"])) {
         echo $code.": ".$error_message."<br />";
     }
 } 
+
+// List blobs.
+   $listBlobsOptions = new ListBlobsOptions();
+   $listBlobsOptions->setPrefix("");
 
 ?>
 
@@ -158,6 +141,7 @@ if (isset($_POST["submit"])) {
 			<tbody>
 				<?php
 				do {
+					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 					foreach ($result->getBlobs() as $blob)
 					{
 						?>
