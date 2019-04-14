@@ -17,9 +17,6 @@ if (isset($_POST['submit'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta name="description" content="">
             <meta name="author" content="">
-            <link rel="icon" href="https://raw.githubusercontent.com/muhrizky/Smart-Parkir/master/parking_meter__2__Mrq_icon.ico">
-
-            <title>Undip Smart Parkir</title>
 
             <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -42,14 +39,14 @@ if (isset($_POST['submit'])) {
 				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/">Home</a>
 			</li>
 			<li class="nav-item active">
-				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/analyze.php">Analisis Kendaraan<span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/analyze.php">Analisis Gambar<span class="sr-only">(current)</span></a>
 			</li>
 		</div>
 		</nav>
 		<main role="main" class="container">
     		<div class="starter-template"> <br><br><br>
-        		<h1>Hasil Analisis Kendaraan</h1>
-				<p class="lead">Berikut merupakan hasil analisis kendaraan yang <b>Anda</b> Upload <br> Karakteristik Foto kendaraan ada pada kolom Response.</p>
+        		<h1>Hasil Analisis Gambar</h1>
+				<p class="lead">Berikut merupakan hasil analisis gambar </p>
 				<span class="border-top my-3"></span>
 			</div>
         <script type="text/javascript">
