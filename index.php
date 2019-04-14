@@ -51,8 +51,7 @@ $containerName = "imagesblob";
 
 if (isset($_POST["submit"])) {
     
-    
-
+   
     try {
         // Create container.
 		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
@@ -152,7 +151,7 @@ if (isset($_POST["submit"])) {
 								<td><?php echo $blob->getName() ?></td>
 								<td><?php echo $blob->getUrl() ?></td>
 								<td>
-									<form action="index.php" method="post">
+									<form action="computervision.php" method="post">
 										<input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
 										<input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
 									</form>
