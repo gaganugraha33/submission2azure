@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 				<a class="nav-link" href="https://submission2azure.azurewebsites.net/">Home</a>
 			</li>
 			<li class="nav-item active">
-				<a class="nav-link" href="https://submission2azure.azurewebsites.net/analyze.php">Analisis Gambar<span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="https://submission2azure.azurewebsites.net/computervision.php">Analisis Gambar<span class="sr-only">(current)</span></a>
 			</li>
 		</div>
 		</nav>
