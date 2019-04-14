@@ -161,9 +161,6 @@ if (isset($_POST["submit"])) {
 						}
 						$listBlobsOptions->setContinuationToken($result->getContinuationToken());
 					} while($result->getContinuationToken());
-					
-					 $blob = $blobClient->getBlob($containerName, $fileToUpload);
-					fpassthru($blob->getContentStream());
 					?>
 				</tbody>
 			</table>
