@@ -42,10 +42,9 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==;";
-
+$containerName = "imagesblob";
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
-$containerName = "imagesblob";
 
 //$fileToUpload = "HelloWorld.txt";
 
@@ -59,8 +58,8 @@ if (isset($_POST["submit"])) {
         $blobClient->createContainer($containerName, $createContainerOptions);
 
         // Getting local file so that we can upload it to Azure
-        $myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
-        fclose($myfile);
+        //$myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
+        //fclose($myfile);
         
         # Upload file as a block blob
         echo "Uploading BlockBlob: ".PHP_EOL;
