@@ -53,19 +53,7 @@ if (isset($_POST["submit"])) {
    
     try {
         // Create container.
-		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
-	   
-        //$blobClient->createContainer($containerName, $createContainerOptions);
-
-        // Getting local file so that we can upload it to Azure
-        //$myfile = fopen($fileToUpload, "w") or die("Unable to open file!");
-        //fclose($myfile);
-        
-        # Upload file as a block blob
-        //echo "Uploading BlockBlob: ".PHP_EOL;
-        //echo $fileToUpload;
-       // echo "<br />";
-        
+		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]); 
         $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
 
         //Upload blob
@@ -90,6 +78,11 @@ if (isset($_POST["submit"])) {
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
+	
+	// List blobs.
+					$listBlobsOptions = new ListBlobsOptions();
+					$listBlobsOptions->setPrefix("");
+					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 } 
 
 ?>
@@ -135,13 +128,11 @@ if (isset($_POST["submit"])) {
 				<tbody>
 					<?php
 					
-					// List blobs.
-					$listBlobsOptions = new ListBlobsOptions();
-					$listBlobsOptions->setPrefix("");
+					
 					
 					do {
 				
-						$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+						
 						foreach ($result->getBlobs() as $blob)
 						{
 							echo $blob->getName().": ".$blob->getUrl()."<br />";
