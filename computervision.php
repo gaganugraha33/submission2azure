@@ -1,7 +1,8 @@
 <?php
 if (isset($_POST['submit'])) {
 	if (isset($_POST['url'])) {
-		$url = $_POST['url'];
+		//$url = $_POST['url'];
+		$url = "test";
 	} else {
 		header("Location: index.php");
 	}
