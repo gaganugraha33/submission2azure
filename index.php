@@ -140,7 +140,7 @@ if (isset($_POST["submit"])) {
 								<td><?php echo $blob->getName() ?></td>
 								<td><?php echo $blob->getUrl() ?></td>
 								<td>
-									<form action="computervision.php" method="post">
+									<form action="computervision.html" method="post">
 										<input type="hidden" name="url" value="<?php echo $blob->getUrl()?>">
 										<input type="submit" name="submit" value="Analyze!" class="btn btn-primary">
 									</form>
