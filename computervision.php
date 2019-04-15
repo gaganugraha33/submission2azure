@@ -57,14 +57,7 @@ if (isset($_POST['submit'])) {
             // **********************************************
             // *** Update or verify the following values. ***
             // **********************************************
-			
-			var a = $("<a>")
-			.attr("href", "<?php echo $url ?>")
-			.attr("download", "<?php echo $url ?>.png")
-			.appendTo("body");
-			
-			a[0].click();
-
+		
 			
             // Replace <Subscription Key> with your valid subscription key.
             var subscriptionKey = "97cb31f22e30417e85d3ba95d0afd0ce";
