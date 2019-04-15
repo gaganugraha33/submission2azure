@@ -1,3 +1,14 @@
+<?php
+if (isset($_POST['submit'])) {
+	if (isset($_POST['url'])) {
+		$url = $_POST['url'];
+	} else {
+		header("Location: index.php");
+	}
+} else {
+	header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +86,7 @@ Enter the URL to an image, then click the <strong>Analyze image</strong> button.
 <br><br>
 Image to analyze:
 <input type="text" name="inputImage" id="inputImage"
-    value="https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
+    value="<?php echo $url ?>" />
 <button onclick="processImage()">Analyze image</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
