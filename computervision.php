@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                 "language": "en",
             };
             // Display the image.
-            var sourceImageUrl = "<?php $url ?>";
+            var sourceImageUrl = "<?php echo $url ?>";
             document.querySelector("#sourceImage").src = sourceImageUrl;
             // Make the REST API call.
             $.ajax({
