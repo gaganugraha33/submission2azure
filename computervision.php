@@ -1,17 +1,4 @@
-<?php
-if (isset($_POST['submit'])) {
-	if (isset($_POST['url'])) {
-		$url = $_POST['url'];
-	} else {
-		header("Location: index.php");
-	}
-} else {
-	if (isset($_POST['url'])) {
-		$url = $_POST['url'];
-	}
-	header("Location: index.php");
-}
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
