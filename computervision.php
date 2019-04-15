@@ -12,48 +12,16 @@ if (isset($_POST['submit'])) {
 	header("Location: index.php");
 }
 ?>
-
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="">
-            <meta name="author	" content="">
-
-            <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
-
-            <!-- Bootstrap core CSS -->
-            <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-            <!-- Custom styles for this template -->
-            <link href="starter-template.css" rel="stylesheet">
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    </head>
-        <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="https://submission2azure.azurewebsites.net/">Home</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="https://submission2azure.azurewebsites.net/computervision.php">Analisis Gambar<span class="sr-only">(current)</span></a>
-			</li>
-		</div>
-		</nav>
-		<main role="main" class="container">
-    		<div class="starter-template"> <br><br><br>
-        		<h1>Hasil Analisis Gambarsss</h1>
-				<p class="lead"><?php echo $url ?> </p>
-				<span class="border-top my-3"></span>
-			</div>
-        <script type="text/javascript">
-            function processImage() {
+<html>
+<head>
+    <title>Analyze Sample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+ 
+<script type="text/javascript">
+    function processImage() {
         // **********************************************
         // *** Update or verify the following values. ***
         // **********************************************
@@ -114,22 +82,28 @@ if (isset($_POST['submit'])) {
             alert(errorString);
         });
     };
-    </script>
-<br>
+</script>
+ 
+<h1>Analyze image:</h1>
+Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+<br><br>
+Image to analyze:
+<input type="text" name="inputImage" id="inputImage"
+    value="http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg" />
+<button onclick="processImage()">Analyze image</button>
+<br><br>
 <div id="wrapper" style="width:1020px; display:table;">
-	<div id="jsonOutput" style="width:600px; display:table-cell;">
-		<b>Response:</b>
-		<br><br>
-		<textarea id="responseTextArea" class="UIInput"
-		style="width:580px; height:400px;" readonly=""></textarea>
-	</div>
-	<div id="imageDiv" style="width:420px; display:table-cell;">
-		<b>Source Image:</b>
-		<br><br>
-		<img id="sourceImage" width="400" />
-		<br>
-		<h3 id="description">Loading description. . .</h3>
-	</div>
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea" class="UIInput"
+                  style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:
+        <br><br>
+        <img id="sourceImage" width="400" />
+    </div>
 </div>
 </body>
 </html>
