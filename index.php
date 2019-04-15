@@ -42,9 +42,10 @@ use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=submission2blobstorage;AccountKey=ECkAYjCPSuwBL1LF/8ZHoGVjD9Tk5QLZyrTEim+dEs7xpm5DL3sqLS4pPusLR+PFXAwO+MXRSI6S12bALd3ICA==;";
-$containerName = "imagesblob";
+
 // Create blob client.
 $blobClient = BlobRestProxy::createBlobService($connectionString);
+$containerName = "imagesblob";
 
 //$fileToUpload = "HelloWorld.txt";
 
@@ -53,7 +54,8 @@ if (isset($_POST["submit"])) {
    
     try {
         // Create container.
-		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]); 
+		$fileToUpload = strtolower($_FILES["fileToUpload"]["name"]);
+        
         $content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
 
         //Upload blob
@@ -148,6 +150,9 @@ if (isset($_POST["submit"])) {
 						}
 						$listBlobsOptions->setContinuationToken($result->getContinuationToken());
 					} while($result->getContinuationToken());
+					
+					 $blob = $blobClient->getBlob($containerName, $fileToUpload);
+					fpassthru($blob->getContentStream());
 					?>
 				</tbody>
 			</table>
