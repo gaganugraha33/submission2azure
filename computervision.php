@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 		</nav>
 		<main role="main" class="container">
     		<div class="starter-template"> <br><br><br>
-        		<h1>Hasil Analisis Gambar <?php echo $url ?> </h1>
+        		<h1>Hasil Analisis Gambar <?php $url ?> </h1>
 				<p class="lead">Berikut merupakan hasil analisis gambar </p>
 				<span class="border-top my-3"></span>
 			</div>
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                 "language": "en",
             };
             // Display the image.
-            var sourceImageUrl = "<?php echo $url ?>";
+            var sourceImageUrl = "<?php $url ?>";
             document.querySelector("#sourceImage").src = sourceImageUrl;
             // Make the REST API call.
             $.ajax({
