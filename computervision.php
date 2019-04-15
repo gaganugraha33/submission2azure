@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 		<main role="main" class="container">
     		<div class="starter-template"> <br><br><br>
         		<h1>Hasil Analisis Gambarsss</h1>
-				<p class="lead">Berikut merupakan hasil analisis gambar </p>
+				<p class="lead"><?php $url ?> </p>
 				<span class="border-top my-3"></span>
 			</div>
         <script type="text/javascript">
