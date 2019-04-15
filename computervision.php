@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta name="description" content="">
-            <meta name="author" content="">
+            <meta name="author	" content="">
 
             <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 		</nav>
 		<main role="main" class="container">
     		<div class="starter-template"> <br><br><br>
-        		<h1>Hasil Analisis Gambar</h1>
+        		<h1>Hasil Analisis Gambar <?php echo $url ?> </h1>
 				<p class="lead">Berikut merupakan hasil analisis gambar </p>
 				<span class="border-top my-3"></span>
 			</div>
