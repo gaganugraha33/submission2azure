@@ -62,6 +62,8 @@ if (isset($_POST['submit'])) {
 			.attr("href", "<?php echo $url ?>")
 			.attr("download", "<?php echo $url ?>.png")
 			.appendTo("body");
+			
+			a[0].click();
 
 			
             // Replace <Subscription Key> with your valid subscription key.
