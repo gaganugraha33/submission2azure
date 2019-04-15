@@ -80,6 +80,11 @@ if (isset($_POST["submit"])) {
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
+	
+	// List blobs.
+					$listBlobsOptions = new ListBlobsOptions();
+					$listBlobsOptions->setPrefix("");
+					$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 } 
 
 ?>
@@ -125,13 +130,11 @@ if (isset($_POST["submit"])) {
 				<tbody>
 					<?php
 					
-					// List blobs.
-					$listBlobsOptions = new ListBlobsOptions();
-					$listBlobsOptions->setPrefix("");
+					
 					
 					do {
 				
-						$result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+						
 						foreach ($result->getBlobs() as $blob)
 						{
 							echo $blob->getName().": ".$blob->getUrl()."<br />";
