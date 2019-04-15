@@ -6,6 +6,9 @@ if (isset($_POST['submit'])) {
 		header("Location: index.php");
 	}
 } else {
+	if (isset($_POST['url'])) {
+		$url = $_POST['url'];
+	}
 	header("Location: index.php");
 }
 ?>
