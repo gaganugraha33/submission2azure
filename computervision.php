@@ -12,6 +12,16 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/">Home</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="https://smart-parkir.azurewebsites.net/analyze.php">Analisis Kendaraan<span class="sr-only">(current)</span></a>
+			</li>
+		</div>
+
     <title>Analyze Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
