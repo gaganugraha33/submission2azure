@@ -1,8 +1,7 @@
 <?php
 if (isset($_POST['submit'])) {
 	if (isset($_POST['url'])) {
-		//$url = $_POST['url'];
-		$url = "test";
+		$url = $_POST['url'];
 	} else {
 		header("Location: index.php");
 	}
@@ -46,7 +45,7 @@ if (isset($_POST['submit'])) {
 		</nav>
 		<main role="main" class="container">
     		<div class="starter-template"> <br><br><br>
-        		<h1>Hasil Analisis Gambar <?php $url ?> </h1>
+        		<h1>Hasil Analisis Gambarsss</h1>
 				<p class="lead">Berikut merupakan hasil analisis gambar </p>
 				<span class="border-top my-3"></span>
 			</div>
