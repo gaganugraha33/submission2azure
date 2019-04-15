@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 <body>
  
 <script type="text/javascript">
-    $(document).ready(function () {
+    function processImage() {
         // **********************************************
         // *** Update or verify the following values. ***
         // **********************************************
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                 jQuery.parseJSON(jqXHR.responseText).message;
             alert(errorString);
         });
-    });
+    };
 </script>
  
 <h1>Analyze image:</h1>
